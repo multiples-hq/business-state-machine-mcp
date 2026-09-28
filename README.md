@@ -32,22 +32,6 @@ In Claude Code, install the skills first:
 The `get-started` skill asks where the ledger should run, sets it up,
 connects your email source and walks you through writing your SOP.
 
-### By hand
-
-You need Python 3.10 or newer and Postgres 16.
-
-```sh
-git clone https://github.com/multiples-hq-jc/business-state-machine-mcp.git
-cd business-state-machine-mcp
-python3 -m venv .venv
-.venv/bin/pip install -r mcp/requirements.txt
-```
-
-Then follow [mcp/README.md](mcp/README.md): create three Postgres roles, run
-the schema and migrations, and register the server in your harness with
-`LEDGER_DSN`, `LEDGER_FILES` and `LEDGER_DROP`. List the tools to check:
-you should see 40.
-
 ## Are you an AI agent?
 
 Read [skills/README.md](skills/README.md) to install the skills, then
