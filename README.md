@@ -22,16 +22,6 @@ Read skills/get-started/SKILL.md in that repository and follow it.
 Ask me whatever it needs, and install nothing without asking me first.
 ```
 
-In Claude Code, install the skills first:
-
-```
-/plugin marketplace add multiples-hq-jc/business-state-machine-mcp
-/plugin install business-state-machine-mcp@business-state-machine-mcp
-```
-
-The `get-started` skill asks where the ledger should run, sets it up,
-connects your email source and walks you through writing your SOP.
-
 ## Are you an AI agent?
 
 Read [skills/README.md](skills/README.md) to install the skills, then
