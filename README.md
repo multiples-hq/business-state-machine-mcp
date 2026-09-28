@@ -47,97 +47,6 @@ anything.
 
 At Multiples we buy durable service businesses and make them AI native. 
 
-On day one we don't hand the business to a persistent agent. The operators
-first learn to run their own manual process through an agent harness, the
-tool they use to drive a fleet of agents. Whether a human stays in the loop
-or an agent runs on its own, the business needs one machine that holds its
-state: which jobs, visits, shipments and quotes exist, what has happened
-to each, and what should happen next. It has to work the same way in every
-business we run, so we built it once and opened it up.
-
-The ledger records; your agent decides. The server derives no status and
-guesses nothing. Every status an agent sets must cite the recorded evidence
-it rests on, such as an email, a document or your answer, and nothing
-recorded can be edited or deleted.
-
-## What you get
-
-Your mail tool hands each email to your agent. The agent records it in the
-ledger and updates the milestones it supports: the steps your SOP (your
-written procedure) lists for every job. Here is one job from a made-up
-sign shop we test with; nothing here is real, and nothing like it ships
-with the ledger. The ledger returns data, not a screen; this is how the
-agent summarised it (shortened):
-
-```
-Corner Cafe fascia sign                   SOP: Bright Signs sign work v1
-  quote    Enquiry received         done      <a1@mail.example>
-           Quote sent               done      <a3@mail.example>
-  booking  Proof approved           done      <a4@mail.example>
-           Deposit received         done      <a4@mail.example>, your answer
-  job      moved to recovery SOP "Reprint after damage" v1: face cracked on install
-           Damage reported          done      <a5@mail.example>
-           Replacement printed      pending   <a5@mail.example>, your answer
-           Completion form signed   blocked   <a5@mail.example>: "Customer not signed off"
-           Balance paid             unassessed
-           history: Sign printed done · Installed on site failed
-  waiting for: Bright Signs: reprint the acrylic face and book the refit at
-               Corner Cafe; then customer sign-off.
-```
-
-Each `<…@mail.example>` is the ID of the email behind that status. "Your
-answer" means the agent asked you a question in the chat and recorded your
-reply as evidence. `pending` means not yet done with nothing in the way,
-and its evidence shows where the step stands; `blocked` means someone else
-must act first; `failed` means it was tried and did not happen;
-`unassessed` means no one has judged it yet. `waiting for` comes from the
-agent's latest memo on the job. When the sign cracked, the agent moved the
-job to a recovery SOP (the `break-glass` skill covers this); `history`
-shows the steps from its earlier SOP that no longer apply.
-
-From this the agent tells you, in the chat, what only you can unblock
-and which follow-ups are due. For example, it writes:
-
-```
-Unblock me
-  Corner Cafe fascia sign: when is the refit booked? (a date / not yet)
-    A reprint is needed and the refit has no date. <a5@mail.example>, your answer
-Follow-up needed
-  Corner Cafe fascia sign: the customer has not signed the completion form.
-    The installer reported "Customer not signed off". <a5@mail.example>
-  Shall I draft a reminder for you to send, will you handle it, or wait until a date?
-```
-
-## One email, end to end
-
-What the agent does with one email; owners can skip to the next section.
-In short: the agent files the email and its PDF, finds the quote by its
-number, opens the booking, marks "Contract signed" done and tells you
-what is next. Step by step, with the tools it calls:
-
-Quote Q-1042 follows the
-[HVAC installer SOP](examples/hvac-installer-sop.json). When the agent
-created the quote, it also saved the quote number, with
-`record_external_reference`. The customer replies: "Signed contract
-attached." The agent:
-
-1. Looks the email up by its Message-ID with `find_evidence`. It is new, so
-   `record_evidence` stores it word for word, and `put_file` stores the
-   signed PDF as a second piece of evidence.
-2. Finds the quote with `resolve_external_reference` on "Q-1042", creates
-   the booking with `create_booking`, which gives it the SOP's booking
-   milestones, and links the email and the PDF to it with
-   `link_evidence_work`.
-3. Reads the booking's milestones with `read_work_review`, then calls
-   `record_review`: "Contract signed" is `done`, citing the email and the PDF, with a memo
-   saying the work now waits for the deposit.
-4. Reads the quote and its booking back with `read_case_brief` and tells
-   you what is waiting on you.
-
-We ran these calls in this order on a test ledger, after publishing the
-HVAC SOP, creating the quote, adopting the SOP at the quote and recording
-the quote number; each one succeeded.
-
 ## Core concepts
 
 Every ledger record lives in one Postgres schema, `spine` (the project's
@@ -167,7 +76,7 @@ corrected. Every write carries an actor label that names who wrote it, such as
 
 **Quotes, bookings and jobs.** A quote is a request for work and the offer
 made for it. When the customer accepts, the agent creates a booking under
-the quote; a quote can have several. A job is one piece of work carried
+the quote; a quote can have several bookings. A job is one piece of work carried
 out, linked to one booking or standing on its own with no quote, such as
 repeat maintenance. Other systems' numbers for the same work, such as an
 order number, are recorded as external references, so a later email that
