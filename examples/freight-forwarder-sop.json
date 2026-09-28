@@ -1,0 +1,176 @@
+{
+  "stages": {
+    "quote": {
+      "phases": [
+        {
+          "key": "enquiry",
+          "name": "Enquiry",
+          "display_order": 10,
+          "milestones": [
+            {
+              "key": "enquiry-received",
+              "title": "Enquiry received",
+              "criterion": "EXAMPLE ONLY: this SOP is a labeled example for testing and demonstration, not a company standard; replace it before real use. Cited evidence shows a customer asking for a price or a service for a described shipment."
+            },
+            {
+              "key": "scope-understood",
+              "title": "Scope of work understood",
+              "criterion": "Cited evidence states the origin, the destination, the mode and the goods well enough to price the work. Name any open question in the memo instead of assuming an answer."
+            }
+          ]
+        },
+        {
+          "key": "pricing",
+          "name": "Pricing",
+          "display_order": 20,
+          "milestones": [
+            {
+              "key": "costs-obtained",
+              "title": "Costs obtained",
+              "criterion": "Cited evidence shows a rate or a cost from every supplier needed to price the work, or records why one is still missing."
+            },
+            {
+              "key": "quote-sent",
+              "title": "Quote sent to customer",
+              "criterion": "Cited evidence shows the priced offer reaching the customer, with its validity date when the offer states one."
+            }
+          ]
+        },
+        {
+          "key": "quote-outcome",
+          "name": "Outcome",
+          "display_order": 30,
+          "milestones": [
+            {
+              "key": "quote-answered",
+              "title": "Customer answered the quote",
+              "criterion": "Cited evidence shows the customer accepting, declining or asking for a change. Silence past the validity date is not an answer; judge it pending and say what is waited on."
+            }
+          ]
+        }
+      ]
+    },
+    "booking": {
+      "phases": [
+        {
+          "key": "acceptance",
+          "name": "Acceptance",
+          "display_order": 10,
+          "milestones": [
+            {
+              "key": "booking-confirmed",
+              "title": "Booking confirmed by customer",
+              "criterion": "Cited evidence shows the customer instructing the work to proceed, in writing or as a recorded account of a verbal instruction."
+            },
+            {
+              "key": "terms-agreed",
+              "title": "Commercial terms agreed",
+              "criterion": "Cited evidence states the agreed price, the incoterm and the payment terms, or names which of them is still open."
+            }
+          ]
+        },
+        {
+          "key": "carrier-arrangement",
+          "name": "Carrier arrangement",
+          "display_order": 20,
+          "milestones": [
+            {
+              "key": "carrier-booked",
+              "title": "Carrier space booked",
+              "criterion": "Cited evidence shows a carrier accepting the booking and issuing its own reference. Record that reference as an external reference; it is not this booking."
+            },
+            {
+              "key": "schedule-confirmed",
+              "title": "Schedule confirmed",
+              "criterion": "Cited evidence gives the planned departure and arrival. A planned date is an estimate and is never judged as an actual occurrence."
+            }
+          ]
+        },
+        {
+          "key": "instructions",
+          "name": "Instructions",
+          "display_order": 30,
+          "milestones": [
+            {
+              "key": "shipper-instructed",
+              "title": "Shipper instructed",
+              "criterion": "Cited evidence shows the collection or delivery instruction reaching the party who must act on it, not only that it was written."
+            }
+          ]
+        }
+      ]
+    },
+    "job": {
+      "phases": [
+        {
+          "key": "origin",
+          "name": "Origin",
+          "display_order": 10,
+          "milestones": [
+            {
+              "key": "cargo-collected",
+              "title": "Cargo collected",
+              "criterion": "Cited evidence shows the goods leaving the collection address. A signed driver receipt is stronger evidence than a planning document."
+            },
+            {
+              "key": "export-documents-ready",
+              "title": "Export documents ready",
+              "criterion": "Cited evidence shows every export document this route needs is in hand and matches the cargo description."
+            }
+          ]
+        },
+        {
+          "key": "departure",
+          "name": "Departure",
+          "display_order": 20,
+          "milestones": [
+            {
+              "key": "export-cleared",
+              "title": "Export customs cleared",
+              "criterion": "Cited evidence shows the export authority releasing the goods. A lodged declaration is not yet a release."
+            },
+            {
+              "key": "departed",
+              "title": "Departed origin",
+              "criterion": "Cited evidence shows the vessel, aircraft or truck leaving with these goods on board."
+            }
+          ]
+        },
+        {
+          "key": "arrival",
+          "name": "Arrival",
+          "display_order": 30,
+          "milestones": [
+            {
+              "key": "arrived",
+              "title": "Arrived at destination point",
+              "criterion": "Cited evidence shows the goods reaching the destination port, airport or terminal."
+            },
+            {
+              "key": "import-cleared",
+              "title": "Import customs cleared",
+              "criterion": "Cited evidence shows the import authority releasing the goods to the consignee or their broker."
+            }
+          ]
+        },
+        {
+          "key": "closing",
+          "name": "Closing",
+          "display_order": 40,
+          "milestones": [
+            {
+              "key": "delivered",
+              "title": "Delivered",
+              "criterion": "Cited evidence shows the consignee receiving the goods. A proof of delivery names who signed and when; arrival at a terminal does not prove delivery."
+            },
+            {
+              "key": "charges-settled",
+              "title": "Charges settled",
+              "criterion": "Cited evidence shows every charge invoiced and any dispute either resolved or named as still open."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

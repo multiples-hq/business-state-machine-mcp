@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+.venv/
+
+# Local settings, logs and system files
+.env
+.env.*
+*.log
+.DS_Store
+node_modules/
+
+# A local working folder; nothing in it is committed.
+work/

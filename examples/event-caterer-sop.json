@@ -1,0 +1,73 @@
+{
+  "stages": {
+    "quote": {
+      "phases": [
+        {
+          "key": "proposal",
+          "name": "Proposal",
+          "display_order": 10,
+          "milestones": [
+            {"key": "enquiry-received", "title": "Enquiry received",
+             "criterion": "Cited evidence shows a customer asking about catering for an event, with its date and rough guest count."},
+            {"key": "date-available", "title": "Date confirmed available",
+             "criterion": "Cited evidence shows the business told the customer it can cater on that date."},
+            {"key": "proposal-sent", "title": "Proposal sent",
+             "criterion": "Cited evidence shows a menu and price reaching the customer."}
+          ]
+        }
+      ]
+    },
+    "booking": {
+      "phases": [
+        {
+          "key": "confirm",
+          "name": "Confirm",
+          "display_order": 10,
+          "milestones": [
+            {"key": "contract-signed", "title": "Contract signed",
+             "criterion": "Cited evidence shows the customer accepting the proposal in writing."},
+            {"key": "deposit-paid", "title": "Deposit paid",
+             "criterion": "Cited evidence shows the deposit received."}
+          ]
+        },
+        {
+          "key": "plan",
+          "name": "Plan",
+          "display_order": 20,
+          "milestones": [
+            {"key": "menu-final", "title": "Menu finalised",
+             "criterion": "Cited evidence shows the customer approving the final menu, including dietary requests."},
+            {"key": "headcount-final", "title": "Final headcount confirmed",
+             "criterion": "Cited evidence shows the customer stating the final number of guests. An estimate is not final."},
+            {"key": "venue-access-agreed", "title": "Venue access agreed",
+             "criterion": "Cited evidence shows the venue's access time, kitchen and parking arrangements agreed."}
+          ]
+        }
+      ]
+    },
+    "job": {
+      "phases": [
+        {
+          "key": "event",
+          "name": "Event",
+          "display_order": 10,
+          "milestones": [
+            {"key": "event-served", "title": "Event served",
+             "criterion": "Cited evidence shows the event took place with the business serving, such as a staff report or the customer's thanks."},
+            {"key": "equipment-collected", "title": "Equipment collected",
+             "criterion": "Cited evidence shows all hired or owned equipment collected from the venue."}
+          ]
+        },
+        {
+          "key": "settle",
+          "name": "Settle",
+          "display_order": 20,
+          "milestones": [
+            {"key": "final-invoice-paid", "title": "Final invoice paid",
+             "criterion": "Cited evidence shows the balance paid, adjusted for the final headcount."}
+          ]
+        }
+      ]
+    }
+  }
+}

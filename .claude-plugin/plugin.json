@@ -1,0 +1,11 @@
+{
+  "name": "business-state-machine-mcp",
+  "displayName": "Business state machine",
+  "version": "0.1.0",
+  "description": "Skills for an agent that keeps a Postgres ledger of quotes, bookings and jobs up to date from email and other updates: set it up, write the SOP, update the ledger, tell the person what needs them, and move a job onto a recovery procedure.",
+  "author": {
+    "name": "Multiples"
+  },
+  "repository": "https://github.com/multiples-hq-jc/business-state-machine-mcp",
+  "license": "Apache-2.0"
+}
