@@ -1,9 +1,8 @@
 # Business state machine MCP
 
-**A Postgres ledger and MCP server that keeps the state of a service
+**A Postgres ledger and MCP server that keeps the state of a
 business: every quote, booking and job, what has happened, what is next,
-and the evidence behind each step.** It tracks business state, not the
-state of an agent run or a workflow engine.
+and the evidence behind each step.**
 
 [Quickstart](#quickstart) · [Core concepts](#core-concepts) ·
 [How it works](#how-it-works) · [Skills](skills/README.md) ·
