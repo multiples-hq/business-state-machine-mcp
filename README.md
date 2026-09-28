@@ -76,11 +76,11 @@ corrected. Every write carries an actor label that names who wrote it, such as
 
 **Quotes, bookings and jobs.** A quote is a request for work and the offer
 made for it. When the customer accepts, the agent creates a booking under
-the quote; a quote can have several bookings. A job is one piece of work carried
-out, linked to one booking or standing on its own with no quote, such as
-repeat maintenance. Other systems' numbers for the same work, such as an
-order number, are recorded as external references, so a later email that
-quotes one can be traced to its work.
+the quote; a quote can have several bookings. A job is one piece of work 
+being executed, linked to one booking, such as a site visit, a shipment, 
+an appointment maintenance. Other systems' numbers for the same work, 
+such as an order number, are recorded as external references, so a later 
+email that quotes one can be traced to its work.
 
 **Evidence.** An email, note or file, stored word for word, with where it
 came from and when, if known. Evidence can be linked to the work it is
