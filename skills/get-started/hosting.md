@@ -10,13 +10,16 @@ The ledger is tested on Postgres 16. Other versions are not tested.
 
 ## This machine
 
-Postgres, the server and the folders all on one computer. Follow
-`mcp/README.md` as written. Back up the database with `pg_dump` and the
+Postgres, the server and the folders all on one computer. Postgres can be
+installed directly or run in Docker, for example the official `postgres:16`
+image with its port published on `localhost` only. Follow `mcp/README.md`
+as written, with the connection strings pointing at that Postgres. Back up the database with `pg_dump` and the
 files folder with any file backup; the two belong together.
 
 ## A server the person controls, over a private network
 
-Postgres runs on a server (a VPS or a machine in the office). The agent
+This is how the project's authors run it: Postgres on a VPS, reached over
+Tailscale. Postgres runs on a server (a VPS or a machine in the office). The agent
 and the MCP server run on another machine and reach Postgres over a private
 network such as a tailnet (a private network between your own machines,
 made with a tool such as Tailscale).

@@ -34,6 +34,15 @@ follows the version its quote adopted, to the end.
    criterion of the job stage's first milestone. All three stages must be
    present. A stage may be empty, for a business that has no bookings or
    never quotes.
+
+   An SOP can go straight to the job, but recommend all three stages and
+   say why. Many businesses track only the work itself: a freight
+   forwarder tracks shipments, an installer tracks installs. The quote
+   stage shows which offers wait on the customer and need a follow-up. The
+   booking stage holds what must be agreed before work starts: the
+   signature, the deposit, the date. Without them, the work the business
+   is still winning, or has won but not arranged, is invisible. If the
+   person still wants jobs only, leave the other two stages empty.
 3. **Write milestones as outcomes, not tasks.** "Deposit received", not
    "Chase the deposit". A title is a short noun phrase of at most six
    words, with no names, numbers or dates. The criterion says what a

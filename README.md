@@ -32,8 +32,13 @@ has no inbox connector and no scheduler. Your email reaches the agent
 through a mail tool of your own, or you paste it in; anything scheduled
 runs on your agent app's own scheduler.
 
-Your first day after setup: write your SOP with the agent, paste in one
-real email about a job, then ask "what is waiting on me?"
+Your first day, on your own work (there is no sample data to load):
+
+1. Make sure your agent can reach your inbox, through your mail tool.
+2. Learn what an SOP and a milestone are, and write your SOP with the
+   agent.
+3. Pick one real quote, booking or job. Have the agent find every past
+   email about it and record them, then ask "what is waiting on me?"
 
 Setting it up yourself? Follow [mcp/README.md](mcp/README.md). The server
 is connected when your agent app lists 40 ledger tools (45 with the
@@ -67,8 +72,9 @@ recorded can be edited or deleted.
 
 Your mail tool hands each email to your agent. The agent records it in the
 ledger and updates the milestones it supports: the steps your SOP (your
-written procedure) lists for every job. Here is one job from a test run
-with a sign shop. The ledger returns data, not a screen; this is how the
+written procedure) lists for every job. Here is one job from a made-up
+sign shop we test with; nothing here is real, and nothing like it ships
+with the ledger. The ledger returns data, not a screen; this is how the
 agent summarised it (shortened):
 
 ```
@@ -302,6 +308,13 @@ holding a `SKILL.md` file, so any agent app that reads skills can use them;
   Outlook, an email client with an agent, or a skill of your own picks the
   messages that matter and hands each one to your agent. Pasting an email
   into the chat works too.
+- **Track every piece of work as quote, then booking, then job.** An SOP
+  can go straight to the job, and many businesses think only in jobs: a
+  freight forwarder tracks shipments, an installer tracks installs. But
+  the quote stage shows which offers are waiting on the customer, and the
+  booking stage holds what must be agreed before work starts, such as the
+  signature, the deposit and the date. Without them, work you are still
+  winning, or have won but not arranged, is invisible.
 - **Write your own SOP.** No example for your trade? The `manage-sop` skill
   turns your checklist or training document into one.
 - **Give each quote or job an SOP before the agent marks progress.** The
@@ -310,12 +323,17 @@ holding a `SKILL.md` file, so any agent app that reads skills can use them;
   will not judge it until it has one.
 - **Answer the agent's questions in the chat.** It records each answer as
   evidence, so the statuses that rest on it can cite it.
-- **Where to host Postgres.** Your own machine, a server you reach over a
-  private network, or hosted Postgres such as Supabase, Neon or Amazon RDS,
-  if the provider lets you create roles, grant one role to another, and
-  create `SECURITY DEFINER` functions and triggers. The file folders stay
-  on the machine that runs the server. Another database would need the
-  rules rebuilt, because they are Postgres functions and triggers.
+- **Where to host it.** We run Postgres on a private VPS and reach it over
+  Tailscale. Working alone, your own computer is fine, with Postgres
+  installed or in Docker. Hosted Postgres such as Supabase, Neon or Amazon
+  RDS works if the provider lets you create roles, grant one role to
+  another, and create `SECURITY DEFINER` functions and triggers. The
+  `get-started` skill asks which you want and explains the trade-offs.
+  Another database, such as Snowflake, would need the rules rebuilt,
+  because they are Postgres functions and triggers.
+- **Files stay in a plain folder.** Attachments are stored as evidence in
+  a folder on the machine that runs the server, each named by the SHA-256
+  hash of its contents. No S3 or R2 is needed.
 
 ## What it is not
 

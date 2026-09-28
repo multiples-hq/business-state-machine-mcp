@@ -23,12 +23,21 @@ in the repository; this skill does not repeat it.
    to know where each one stands with proof. A business that never quotes
    can use jobs on their own. The ledger keeps no prices, invoices or
    payments; say so if that is what they want.
-2. **Where it runs.** Ask which of these they want. Details for each are in
-   [hosting.md](hosting.md).
-   - This machine.
-   - A server they control, reached over a private network such as a
-     tailnet.
-   - Hosted Postgres, such as Supabase, Neon or Amazon RDS.
+2. **Where it runs.** Ask which of these they want, with the trade-offs.
+   Details for each are in [hosting.md](hosting.md).
+   - This machine, with Postgres installed or in Docker. Quickest to try
+     and good for one person; the ledger lives and dies with that machine,
+     so it needs backups.
+   - A server they control, such as a VPS, reached over a private network
+     such as a tailnet. This is how the project's authors run it: several
+     machines can share one ledger, and nothing is on the public internet.
+     It takes a server and some network setup.
+   - Hosted Postgres, such as Supabase, Neon or Amazon RDS. No server to
+     run, but the provider must allow what the ledger needs, and the data
+     sits with them.
+   In every case files are kept in a plain folder on the machine that runs
+   the MCP server, each named by the SHA-256 hash of its contents. S3, R2
+   and similar are not needed.
    - Anything that is not Postgres, such as Snowflake, MotherDuck or
      BigQuery, is not supported. The ledger's rules are Postgres functions
      and triggers that refuse bad writes, and another engine would drop
@@ -64,9 +73,21 @@ in the repository; this skill does not repeat it.
 8. **The schedule.** Updates are handled by the `update-the-state-machine`
    skill, then `call-to-action`. To run that every few minutes, use the
    harness's own scheduler. This project has none.
-9. **The SOP.** Ask whether they have a written process: a training
-   document, a checklist, an onboarding guide. Either way, continue with
-   the `manage-sop` skill. Nothing is judged until a chain has an SOP.
+9. **The SOP.** Explain the two ideas first. An SOP is their written
+   process, split into stages: quote, booking and job. A milestone is one
+   outcome in it that an email can show, such as "Deposit received"; the
+   agent marks each milestone done, pending, blocked or failed, citing the
+   email. Recommend tracking every piece of work as quote, then booking,
+   then job, and say why (`manage-sop` step 2). Then ask whether they have
+   a written process: a training document, a checklist, an onboarding
+   guide. Either way, continue with the `manage-sop` skill. Nothing is
+   judged until a chain has an SOP.
+10. **A first run on their own work.** No sample data: once the SOP is
+   published, ask the person to pick one real quote, booking or job. Ask
+   their source to find every past email about it, oldest first, and hand
+   them over as a backlog to `update-the-state-machine`. Then run
+   `call-to-action` and show them what is waiting on them for that one
+   piece of work.
 
 ## Drafts before recording
 
@@ -77,4 +98,5 @@ describes. The agent then writes drafts and records only after their word.
 
 Done when: the tools list, `list_work` answers, the operator party exists,
 the actor label is written down, the source and its contract are agreed,
-and the person has moved on to `manage-sop`.
+an SOP is published, and one real piece of work has been recorded from its
+past emails.
