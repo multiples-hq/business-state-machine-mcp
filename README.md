@@ -23,16 +23,7 @@ Read skills/get-started/SKILL.md in that repository and follow it.
 
 Ask me whatever it needs, and install nothing without asking me first.
 ```
-
-You will need Linux, macOS or WSL; Postgres 16 with `psql` and an admin
-login; Python 3.10 or newer; and an agent app that can run local MCP
-servers, such as Claude Code, Codex or Cursor. Setup creates three Postgres
-roles, runs the migrations and writes your first SOP with you. This project
-has no inbox connector and no scheduler. Your email reaches the agent
-through a mail tool of your own, or you paste it in; anything scheduled
-runs on your agent app's own scheduler.
-
-Your first day, on your own work (there is no sample data to load):
+A quick way to test this yourself:
 
 1. Make sure your agent can reach your inbox, through your mail tool.
 2. Learn what an SOP and a milestone are, and write your SOP with the
@@ -54,8 +45,9 @@ anything.
 
 ## What is this?
 
-At Multiples we buy durable service businesses and make them AI native. On
-day one we don't hand the business to a persistent agent. The operators
+At Multiples we buy durable service businesses and make them AI native. 
+
+On day one we don't hand the business to a persistent agent. The operators
 first learn to run their own manual process through an agent harness, the
 tool they use to drive a fleet of agents. Whether a human stays in the loop
 or an agent runs on its own, the business needs one machine that holds its
