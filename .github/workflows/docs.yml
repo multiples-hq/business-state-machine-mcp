@@ -1,0 +1,46 @@
+# Docs site (website/). Checks that it builds, then asks the Multiples site
+# to redeploy: www.multiples.company builds these docs into
+# /docs/business-state-machine from this repository's main branch.
+name: Docs
+
+on:
+  push:
+    branches: [main]
+    paths: ["website/**", ".github/workflows/docs.yml"]
+  pull_request:
+    paths: ["website/**", ".github/workflows/docs.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+
+  redeploy-site:
+    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger the Multiples site deploy hook
+        env:
+          SITE_DEPLOY_HOOK: ${{ secrets.SITE_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$SITE_DEPLOY_HOOK" ]; then
+            echo "::warning::SITE_DEPLOY_HOOK secret is not set; skipping redeploy."
+            exit 0
+          fi
+          curl -fsS -X POST "$SITE_DEPLOY_HOOK"

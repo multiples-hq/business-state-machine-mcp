@@ -1,6 +1,6 @@
 // Docs site for the business state machine MCP.
-// Served at www.multiples.company/docs/business-state-machine through a
-// rewrite on the Multiples site; built from this folder.
+// Served at www.multiples.company/docs/business-state-machine: the Multiples
+// site builds this folder from main on each deploy (see .github/workflows/docs.yml).
 const {themes: prismThemes} = require('prism-react-renderer');
 
 const repo = 'https://github.com/multiples-hq/business-state-machine-mcp';
