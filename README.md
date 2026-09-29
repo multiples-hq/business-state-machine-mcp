@@ -34,7 +34,7 @@ Paste this into your agent:
 
 ```
 Set up the business state machine ledger from
-github.com/multiples-hq-jc/business-state-machine-mcp for my business.
+github.com/multiples-hq/business-state-machine-mcp for my business.
 
 Read skills/get-started/SKILL.md in that repository and follow it.
 

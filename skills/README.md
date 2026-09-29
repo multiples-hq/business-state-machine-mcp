@@ -22,7 +22,7 @@ something that reads their mail and hands over the updates that matter;
 In Claude Code:
 
 ```
-/plugin marketplace add multiples-hq-jc/business-state-machine-mcp
+/plugin marketplace add multiples-hq/business-state-machine-mcp
 /plugin install business-state-machine-mcp@business-state-machine-mcp
 ```
 
@@ -36,7 +36,7 @@ Paste this into your agent:
 
 ```
 Set up the business state machine ledger from
-github.com/multiples-hq-jc/business-state-machine-mcp for my business.
+github.com/multiples-hq/business-state-machine-mcp for my business.
 Read skills/get-started/SKILL.md in that repository and follow it. Ask me
 whatever it needs, and install nothing without asking me first.
 ```
