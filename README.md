@@ -47,6 +47,10 @@ anything.
 
 At Multiples we buy durable service businesses and make them AI native. 
 
+We've been running into the same problem at every company we try to deploy AI. We need a simple shared ledger across every operator's harness to track the state of a repetitive test that they are working on across our funnels. And that gave us the idea of the business state machine, MCP. This business state machine, MCP, is a simple ledger. It tracks the evidences, the decisions, and the reasoning reasons of every single decision the AI agent makes against a milestone.
+
+A milestone is an item of a checklist that tracks the overall progress of a business task. If all the milestones are checked off, this task is done.
+
 ## Core concepts
 
 Every ledger record lives in one Postgres schema, `spine` (the project's
