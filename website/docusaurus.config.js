@@ -42,7 +42,12 @@ module.exports = {
     },
     navbar: {
       title: 'Business state machine',
-      logo: {alt: 'Multiples', src: 'img/logo.svg', href: 'https://www.multiples.company'},
+      logo: {
+        alt: 'Multiples',
+        src: 'img/logo.svg',
+        srcDark: 'img/logo-dark.svg',
+        href: 'https://www.multiples.company',
+      },
       items: [
         {type: 'docSidebar', sidebarId: 'docs', position: 'left', label: 'Docs'},
         {to: '/reference/tools', label: 'Reference', position: 'left'},

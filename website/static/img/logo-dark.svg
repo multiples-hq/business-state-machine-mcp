@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
   <title id="title">Multiples mark</title>
   <desc id="desc">Standalone Multiples logo mark made from a 4 by 4 grid of diagonal rounded strokes.</desc>
-  <g fill="#000000">
+  <g fill="#ffffff">
     <rect x="8.6" y="9.6" width="10.8" height="4.2" rx="2.1" transform="rotate(-45 14 11.7)" />
     <rect x="22.2" y="9.6" width="10.8" height="4.2" rx="2.1" transform="rotate(-45 27.6 11.7)" />
     <rect x="35.8" y="9.6" width="10.8" height="4.2" rx="2.1" transform="rotate(-45 41.2 11.7)" />
