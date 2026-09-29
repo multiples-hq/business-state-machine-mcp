@@ -1,0 +1,41 @@
+/* Multiples look: Hanken Grotesk, near-black text, light headings, a forest green from the banner. */
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap');
+
+:root {
+  --ifm-font-family-base: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --ifm-heading-font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --ifm-heading-font-weight: 500;
+  --ifm-font-color-base: #1a1816;
+  --ifm-heading-color: #1a1816;
+  --ifm-color-primary: #3b6b4f;
+  --ifm-color-primary-dark: #355f47;
+  --ifm-color-primary-darker: #325a43;
+  --ifm-color-primary-darkest: #294a37;
+  --ifm-color-primary-light: #417757;
+  --ifm-color-primary-lighter: #447c5b;
+  --ifm-color-primary-lightest: #4d8c67;
+  --ifm-line-height-base: 1.7;
+  --ifm-code-font-size: 90%;
+  --ifm-navbar-shadow: none;
+  --docusaurus-announcement-bar-height: auto;
+}
+
+[data-theme='dark'] {
+  --ifm-font-color-base: #ece9e4;
+  --ifm-heading-color: #f5f3ef;
+  --ifm-color-primary: #8cc4a0;
+  --ifm-color-primary-dark: #74b88c;
+  --ifm-color-primary-darker: #68b282;
+  --ifm-color-primary-darkest: #4f9a69;
+  --ifm-color-primary-light: #a4d0b4;
+  --ifm-color-primary-lighter: #b0d6be;
+  --ifm-color-primary-lightest: #d0e7d8;
+}
+
+.navbar { border-bottom: 1px solid var(--ifm-toc-border-color); }
+.navbar__title { font-weight: 500; }
+.markdown h1 { font-weight: 400; letter-spacing: -0.02em; }
+.markdown h2 { font-weight: 500; letter-spacing: -0.01em; margin-top: 2.2rem; }
+.markdown > p:first-of-type { font-size: 1.1rem; }
+.hero-banner { width: 100%; border-radius: 10px; margin: 0.5rem 0 1.5rem; }
+div[class^='announcementBar'] { font-size: 0.9rem; padding: 0.4rem 0; }

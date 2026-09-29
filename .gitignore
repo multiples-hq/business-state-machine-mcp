@@ -11,3 +11,7 @@ node_modules/
 
 # A local working folder; nothing in it is committed.
 work/
+
+# Docs site build output
+website/build/
+website/.docusaurus/
