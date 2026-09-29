@@ -1,14 +1,16 @@
 {
   "name": "business-state-machine-mcp",
   "owner": {
-    "name": "Multiples"
+    "name": "Multiples",
+    "url": "https://www.multiples.company"
   },
   "description": "Agent skills for the state machine ledger: a Postgres record of quotes, bookings and jobs, kept up to date from email with cited evidence.",
   "plugins": [
     {
       "name": "business-state-machine-mcp",
       "source": "./",
-      "description": "Set up the ledger, write the SOP, update the state machine from each update, and tell the person what needs them."
+      "description": "Set up the ledger, write the SOP, update the state machine from each update, and tell the person what needs them.",
+      "version": "0.1.0"
     }
   ]
 }

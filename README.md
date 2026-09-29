@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://multiples.company"><img src="assets/banner.jpg" alt="Multiples" width="100%"></a>
+  <a href="https://www.multiples.company"><img src="assets/banner.jpg" alt="Multiples" width="100%"></a>
 </p>
 
 <h1 align="center">Business state machine MCP</h1>
@@ -20,6 +20,7 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/version-0.1.0-green" alt="Version 0.1.0">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue" alt="License: Apache 2.0"></a>
   <img src="https://img.shields.io/badge/MCP-stdio-black" alt="MCP over stdio">
   <img src="https://img.shields.io/badge/Postgres-16-336791" alt="Postgres 16">
@@ -176,3 +177,7 @@ Limits today:
 ## License
 
 [Apache 2.0](LICENSE).
+
+---
+
+<p align="center">Built by <a href="https://www.multiples.company">Multiples</a>.</p>
