@@ -32,6 +32,24 @@ A job moved to another SOP keeps the milestones its old procedure had
 under `history_milestones`, with their last status. They are history:
 leave them out.
 
+## Money
+
+Read `read_money_open` once: for the whole business when the person asks,
+or with `party_id` for each customer or vendor the update touched. Take
+the amounts from it; never add them up yourself.
+
+- Owed to the business and late: who, how much, how many days past due.
+  Ask: chase now or wait?
+- Owed by the business: who and by when.
+- A bill charge that is unassessed, or whose amount changed since it was
+  judged: accept or dispute?
+- A payment with nothing allocated: what was it for?
+- Money paid before a bill, and a bill linked to a job with no lines yet:
+  say so.
+
+For one chain, `read_work_money` shows the agreed prices beside the bills:
+a vendor with an agreed price and no bill on the chain has not billed yet.
+
 ## What to tell the person
 
 Group what you found in two parts, most urgent first, one line of context

@@ -28,6 +28,48 @@ CONSTRAINT_MESSAGES = {
     'visit_memos_details_check': 'details must be a JSON object',
     'roles_period_check': 'ended_on must not be before started_on',
     'roles_not_on_self': 'a party cannot hold a role on itself: on_party_id must differ from party_id',
+    # Money (migration 016).
+    'charge_lines_parties_differ':
+        'a charge line needs two different parties: owed_party_id must differ from owes_party_id',
+    'charge_lines_money_needs_currency':
+        'a known amount or rate needs its currency, such as USD',
+    'charge_lines_home_needs_currency': 'home_amount and home_currency go together',
+    'charge_lines_numbers_check':
+        'no amount, rate, quantity or home_amount may be NaN or infinity',
+    'charge_lines_currency_check': 'currency must be a three-letter code in capitals, such as USD',
+    'charge_lines_home_currency_check':
+        'home_currency must be a three-letter code in capitals, such as USD',
+    'charge_lines_one_successor':
+        'that charge line is already replaced; replace the latest line of its chain',
+    'charge_lines_not_self': 'a charge line cannot replace itself',
+    'charge_lines_milestone_id_fkey':
+        'the charge named does not exist: send new_charge with the line to create it',
+    'charge_lines_invoice_id_fkey':
+        'the invoice named does not exist: send it as the invoice of this call',
+    'invoices_parties_differ':
+        'an invoice goes between two different parties: to_party_id must differ from from_party_id',
+    'invoices_total_needs_currency': 'a stated_total needs its currency, such as USD',
+    'invoices_total_check': 'stated_total must not be NaN or infinity',
+    'invoices_currency_check': 'currency must be a three-letter code in capitals, such as USD',
+    'invoices_one_successor':
+        'that invoice version is already replaced; replace its latest version',
+    'invoices_not_self': 'an invoice version cannot replace itself',
+    'invoice_work_links_once': 'this invoice is already linked to that work item',
+    'payments_parties_differ':
+        'a payment goes between two different parties: to_party_id must differ from from_party_id',
+    'payments_amounts_check': 'amount and home_amount must be zero or more, not NaN or infinity',
+    'payments_home_needs_currency': 'home_amount and home_currency go together',
+    'payments_currency_check': 'currency must be a three-letter code in capitals, such as USD',
+    'payments_home_currency_check':
+        'home_currency must be a three-letter code in capitals, such as USD',
+    'payments_one_successor': 'that payment is already replaced; replace its latest version',
+    'payments_not_self': 'a payment cannot replace itself',
+    'payment_allocations_amount_check': 'an allocation amount must be zero or more',
+    'payment_allocations_one_successor':
+        'that allocation is already replaced; replace its latest version',
+    'payment_allocations_not_self': 'an allocation cannot replace itself',
+    'payment_allocations_milestone_id_fkey': 'the charge named does not exist',
+    'payment_allocations_invoice_id_fkey': 'the invoice named does not exist',
 }
 
 # Constraint names by their ending, first match wins. Every table that takes
@@ -49,8 +91,9 @@ CONSTRAINT_ENDINGS = {
 
 # Text columns that must not be empty or blank: <table>_<column>_check.
 NONEMPTY_COLUMNS = ('title', 'name', 'summary', 'decision', 'reason', 'explanation', 'role',
-                    'value', 'source', 'reference_type', 'version', 'media_type')
-OPTIONAL_NONEMPTY_COLUMNS = ('waiting_for', 'description')
+                    'value', 'source', 'reference_type', 'version', 'media_type', 'charge_type')
+OPTIONAL_NONEMPTY_COLUMNS = ('waiting_for', 'description', 'number', 'terms', 'reference',
+                             'method')
 
 # Migration text cannot change once applied, so its older word for a chain
 # (one quote with the bookings and jobs under it) is replaced here. Migration

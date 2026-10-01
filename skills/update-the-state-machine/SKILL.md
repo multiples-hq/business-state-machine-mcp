@@ -63,7 +63,8 @@ memory, so read it before you write. Words: [vocabulary.md](vocabulary.md).
    judgments this evidence moves, the parties and roles it shows, and a
    memo saying what changed and what is waiting. A booking and its job are
    separate work items with separate reviews. How to judge:
-   [judging.md](judging.md).
+   [judging.md](judging.md). When the update is a price, a bill, a
+   payment or a statement, record the money too: [money.md](money.md).
 7. **Read back, then hand over.** `read_case_brief` for each chain you
    touched. Then run the `call-to-action` skill for those chains.
 

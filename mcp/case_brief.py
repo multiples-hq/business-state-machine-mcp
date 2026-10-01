@@ -76,10 +76,11 @@ class CaseBriefMixin:
             gaps.append('No organization is marked as the operator, so "internal" '
                         'cannot be told from "customer" by the ledger.')
         for item in items:
+            named = f"The {item['kind']} \"{item['title']}\""
             if item['sop'] is None:
-                gaps.append(f"The {item['kind']} adopts no SOP version.")
+                gaps.append(f'{named} adopts no SOP version.')
             if not item['parties']:
-                gaps.append(f"The {item['kind']} has no recorded parties.")
+                gaps.append(f'{named} has no recorded parties.')
         uncited = sum(1 for item in items for p in item['parties'] if not p['evidence'])
         if uncited:
             gaps.append(f'{uncited} party role(s) on this chain cite no evidence.')
@@ -111,9 +112,12 @@ class CaseBriefMixin:
                 f'''SELECT reference_type, source, value FROM spine.external_references r
                     WHERE {_OWNED.format(a='r')} ORDER BY recorded_at, id''', params)]
         item['sop'] = self._brief_sop(params)
-        (item['phases'], item['unassigned_milestones'],
-         item['history_milestones']) = self._brief_phases(
+        (item['phases'], item['unassigned_milestones'], item['history_milestones'],
+         item['charges']) = self._brief_phases(
             params, item['sop']['adoption_id'] if item['sop'] else None)
+        # Bills linked to this item; one with no lines reads "billed, stated
+        # total, lines not recorded".
+        item['invoices'] = self.linked_invoices(work_id)
         item['parties'] = self._brief_parties(params)
         item['evidence'] = self._brief_evidence(params)
         item['memos'] = self._brief_memos(params)
@@ -201,6 +205,10 @@ class CaseBriefMixin:
             'SELECT p.id, p.name, p.display_order FROM spine.phases p WHERE '
             + _OWNED.format(a='p') + ' ORDER BY p.display_order, p.id', params)
         phase_names = {str(pid): name for pid, name, _ in phase_rows}
+        # A milestone with a charge line is a charge, listed under charges.
+        # One an SOP named also stays where it is; one no SOP named is listed
+        # only there. read_work_money gives the amounts.
+        charge_ids, charges = self.charge_milestone_ids(params['id']), []
         milestones, history, holds_history = {}, [], set()
         for milestone_id, title, phase_id, at in self._rows('''
                 SELECT m.id, m.title, a.phase_id, m.recorded_at FROM spine.milestones m
@@ -216,6 +224,10 @@ class CaseBriefMixin:
                 'adoption_id': bound_by.get(key),
                 'status': latest[key]['status'] if key in latest else 'unassessed',
                 'latest': latest.get(key)}
+            if key in charge_ids:
+                charges.append({'phase': phase_names.get(phase), **entry})
+                if key not in criteria:
+                    continue
             if current and key in criteria and key not in in_current:
                 history.append({'phase': phase_names.get(phase), **entry})
                 holds_history.add(phase)
@@ -229,7 +241,7 @@ class CaseBriefMixin:
              for pid, name, order in phase_rows
              if str(pid) in sop_order or str(pid) in milestones or str(pid) not in holds_history),
             key=lambda p: (p['sop_order'] is None, p['sop_order'] or 0, p['display_order']))
-        return phases, milestones.get(None, []), history
+        return phases, milestones.get(None, []), history, charges
 
     def _brief_parties(self, params):
         if self._parties_installed():

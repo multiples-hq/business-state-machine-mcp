@@ -48,7 +48,12 @@ and its new milestones judged from what the ledger already knows.
    already settles, citing it, with a memo saying which version the job
    moved to, why, and on whose approval. Record nothing new from the
    inbox here; new updates go through `update-the-state-machine`.
-6. **Read back and hand over.** `read_case_brief` again, then
+6. **Review what is owed.** `read_work_money` for the job. What is owed
+   to the business stays. Charges recorded before the move are marked;
+   put each open one the business owes to the person and ask whether it
+   still stands. Record their answer as in the `update-the-state-machine`
+   skill's money page.
+7. **Read back and hand over.** `read_case_brief` again, then
    `call-to-action` for the job.
 
 ## Several jobs at once

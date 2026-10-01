@@ -45,8 +45,10 @@ moves it onto a recovery procedure, with the person's yes.
 
 Record each organization, person or agent the update introduces with
 `create_party`, and the email, phone or address it shows with
-`record_party_identifier`, citing the update. Check `read_party` or the
-case brief first; parties are never merged, so a duplicate stays forever.
+`record_party_identifier`, citing the update. Look it up first with
+`find_parties` (the email, the phone or the name) and ask the person when
+only the name matches; parties are never merged, so a duplicate stays
+forever.
 Put each party's part in the work as a role in the same `record_review`,
 citing the update that shows it, with confidence `mentioned` when the part
 is unclear. A standing relationship (a person who works at a company, a

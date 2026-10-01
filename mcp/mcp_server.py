@@ -27,6 +27,8 @@ from mcp_work_review import register_work_review_tools
 from mcp_review import register_review_tools
 from mcp_evidence import EvidenceWorkInput, link_evidence, register_evidence_tools
 from mcp_parties import register_party_tools
+from mcp_money import register_money_tools
+from mcp_payments import register_payment_tools
 from mcp_proposals import register_proposal_tools
 
 
@@ -276,7 +278,9 @@ def build_server(ledger, extra_tool_groups=()):
         adopts, its phases and every milestone's latest judgment with
         citations, the parties in their recorded roles, the evidence linked
         to it, the latest memo and, for a job, its documents. A milestone
-        that no SOP adoption named shows from_sop false. The last section,
+        that no SOP adoption named shows from_sop false. charges lists every
+        milestone with a charge line; one no SOP named is listed only there.
+        The last section,
         not_recorded, lists what is missing or uncited on this chain, such
         as a work item that adopts no SOP version or a party role that cites
         no evidence, so a blank is never read as "nothing to say". The
@@ -294,6 +298,8 @@ def build_server(ledger, extra_tool_groups=()):
     register_review_tools(tool, serialized, ledger)
     register_evidence_tools(tool, serialized, ledger)
     register_party_tools(tool, serialized, ledger)
+    register_money_tools(tool, serialized, ledger)
+    register_payment_tools(tool, serialized, ledger)
     for register_group in extra_tool_groups:
         register_group(tool, serialized, ledger)
 

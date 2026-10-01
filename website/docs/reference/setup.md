@@ -32,6 +32,11 @@ Words used here:
   milestone with no judgment yet reads as `unassessed`; that is a gap, not a
   fifth judgment word.
 - A **memo** is the note a reviewer leaves after looking at a work item.
+- A **charge** is a milestone with at least one charge line: one priced
+  thing, between one party that owes and one that is owed. A **charge
+  line** states its amount, expected (agreed) or invoiced (billed). An
+  **invoice** is one version of a bill. A **payment** is money that moved;
+  an **allocation** puts it on a charge or a bill.
 - An **SOP** (standard operating procedure) is a published list of phases and
   milestones for the quote, booking and job stages.
 - A **party** is a person, an agent or an organization. A **role** says what a
@@ -95,7 +100,7 @@ psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f postgres/schema.sql
 ```
 
 `postgres/migrate.py` applies the files in `postgres/migrations/`, `001` to
-`015`, in filename order and records each one in `spine.schema_migrations`.
+`017`, in filename order and records each one in `spine.schema_migrations`.
 It prints the name of each file it applies. Running it again applies only
 files it has not seen, so run it again after every update of this
 repository. Never rename or edit an applied file. Two files share the prefix
@@ -158,7 +163,7 @@ MCP server. Most harnesses take a block like this; use absolute paths:
 }
 ```
 
-To check that it worked, connect and list the tools. Expect 40, or 45 when
+To check that it worked, connect and list the tools. Expect 45, or 50 when
 `LEDGER_PROPOSALS` is set.
 
 A program that embeds the server can add its own tools by calling `main` or

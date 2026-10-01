@@ -38,7 +38,7 @@ scheduled runs on your agent app's own scheduler.
 Follow [Setup](reference/setup.md): create three Postgres roles, run the
 schema and migrations, then add the server to your agent app.
 
-The server is connected when your agent app lists 40 ledger tools (45 with
+The server is connected when your agent app lists 45 ledger tools (50 with
 the optional draft tools) and, on a new database, `list_work` returns
 `{"work": []}`.
 

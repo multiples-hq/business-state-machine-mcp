@@ -21,8 +21,10 @@ in the repository; this skill does not repeat it.
    ledger fits a business that is asked for prices (quotes), has some of
    them accepted (bookings) and then carries out the work (jobs), and wants
    to know where each one stands with proof. A business that never quotes
-   can use jobs on their own. The ledger keeps no prices, invoices or
-   payments; say so if that is what they want.
+   can use jobs on their own. The ledger also records what is owed and
+   paid on each one, both ways, and reads what is still open. It is not
+   an accounting system: it files no tax and converts no currency; say so
+   if that is what they want.
 2. **Where it runs.** Ask which of these they want, with the trade-offs.
    Details for each are in [hosting.md](hosting.md).
    - This machine, with Postgres installed or in Docker. Quickest to try
@@ -53,7 +55,7 @@ in the repository; this skill does not repeat it.
    "Connect a harness". Keep the owner's password out of the harness
    configuration. The server connects as the runtime login only.
 5. **Check it works.** Restart the harness and list the ledger's tools:
-   expect 40, or 45 with drafts turned on. Call `list_work`; a new ledger
+   expect 45, or 50 with drafts turned on. Call `list_work`; a new ledger
    answers with an empty list.
 6. **The operator and the actor.** Ask the business's name and record it
    once with `create_party`, `kind` organization and `is_operator` true.
@@ -61,6 +63,16 @@ in the repository; this skill does not repeat it.
    Write it in the harness instructions: the standing instructions the
    harness gives the agent on every run, such as a `CLAUDE.md` or
    `AGENTS.md` file or a system prompt. Later steps add to them.
+   - Ask once which currency the business keeps its books in, and write
+     it in the harness instructions. An amount in another currency is
+     recorded as billed, with its value in the books' currency as
+     `home_amount` once the bank or a stated rate says what it is.
+   - Departments, if they have any: each is an organization created with
+     `create_party` and given a role such as department on the operator
+     with `record_role`. An employee is a person with a role in each
+     department they work in. The business, never a department, is the
+     party on a charge. The ledger records who belongs where; it has no
+     logins and controls no access.
 7. **The source.** Ask how updates reach them. This project does not read
    email. A source is the person's own tool that reads their mail (or
    calls, or forms), decides which updates matter, and hands each one to

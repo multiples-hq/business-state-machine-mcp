@@ -15,5 +15,16 @@ description: What the ledger does not do.
 - Addresses are plain identifier rows. Which address a party uses in which
   role is not recorded.
 - No file deletion and no cleanup of stored files.
-- No pricing, invoicing, payables or receivables.
+- Money is a record for operations, not accounting: no tax filing, no
+  currency conversion, no bank feed, no check against an accounting app.
+- One charge line covering several jobs must be split into one line per job
+  by the agent.
+- A bill with no lines cannot be waived: it has no charge to judge. Reissue
+  it with a stated total of 0 and the reason.
+- A bill recorded without its work links gains them only by a reissue that
+  names them in `work`.
+- A line put on the wrong charge is replaced by 0 and recorded again on the
+  right one; the empty charge stays.
+- A settled bill linked to no work, and its payment, appear in no read.
+- Parties recorded twice before `find_parties` existed stay separate.
 - No user interface. The server calls no outside system and sends nothing.

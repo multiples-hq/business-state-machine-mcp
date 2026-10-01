@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.1.0-green" alt="Version 0.1.0">
+  <img src="https://img.shields.io/badge/version-0.2.0-green" alt="Version 0.2.0">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue" alt="License: Apache 2.0"></a>
   <img src="https://img.shields.io/badge/MCP-stdio-black" alt="MCP over stdio">
   <img src="https://img.shields.io/badge/Postgres-16-336791" alt="Postgres 16">
@@ -51,7 +51,7 @@ A quick way to test this yourself:
    email about it and record them, then ask "what is waiting on me?"
 
 Setting it up yourself? Follow [mcp/README.md](mcp/README.md). The server
-is connected when your agent app lists 40 ledger tools (45 with the
+is connected when your agent app lists 45 ledger tools (50 with the
 optional draft tools) and, on a new database, `list_work` returns
 `{"work": []}`.
 
@@ -78,7 +78,7 @@ business task. When all the milestones are checked off, the task is done.
 
 ## How it works
 
-Think of a bank ledger, kept for your work instead of your money. Nothing
+Think of a bank ledger, kept for your work and its money. Nothing
 is edited or deleted. Every change is a new line that says who made it,
 why, and which email proves it.
 
@@ -116,8 +116,8 @@ checks what it records.
 ## The MCP server
 
 A small Python program that your agent app starts on your computer. It
-gives the agent 40 tools to create work, record evidence, mark milestones
-and read back where everything stands. It never reads your mail and never
+gives the agent 45 tools to create work, record evidence, mark milestones,
+record what is owed and paid, and read back where everything stands. It never reads your mail and never
 sends anything.
 
 Setup, every tool and every setting are in [mcp/README.md](mcp/README.md).
@@ -162,8 +162,11 @@ file, so any agent app that reads skills can use them. See
 
 ## What it is not
 
-No user interface, no pricing or invoicing, no email client and no
-scheduler. The agent decides every status; the ledger never works one out.
+No user interface, no accounting, no email client and no scheduler.
+Money is recorded both ways, as charges, bills and payments on each job,
+and the reads show what is open and how late; nothing files tax or
+converts currency. The agent decides every status; the ledger never works
+one out.
 
 Limits today:
 

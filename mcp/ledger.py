@@ -12,6 +12,8 @@ from psycopg.types.json import Jsonb
 from case_brief import CaseBriefMixin
 from commercial import CommercialLedgerMixin
 from evidence_lookup import EvidenceLookupMixin
+from money import MoneyLedgerMixin
+from party_lookup import PartyLookupMixin
 from review import ReviewLedgerMixin, owner_columns
 from work_list import WorkListMixin
 from sop import SopLedgerMixin
@@ -60,7 +62,8 @@ class EvidenceLinkConflict(ValueError):
 
 
 class Ledger(ReferenceLedgerMixin, EvidenceLookupMixin, SopLedgerMixin, ReviewLedgerMixin,
-             CommercialLedgerMixin, WorkListMixin, CaseBriefMixin):
+             CommercialLedgerMixin, WorkListMixin, CaseBriefMixin, MoneyLedgerMixin,
+             PartyLookupMixin):
     def __init__(self, dsn, files, drop=None, **connection_options):
         self.connection = psycopg.connect(dsn, autocommit=True, **connection_options)
         self.files = Path(files)

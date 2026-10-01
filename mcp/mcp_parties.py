@@ -115,3 +115,21 @@ def register_party_tools(tool, serialized, ledger):
         refused as not found.
         """
         return found(ledger.party(parse_uuid(id)), 'party', id)
+
+    @tool()
+    @serialized
+    def find_parties(text: said(str, 'What you see: an email address, a phone number or a '
+                                     'name, such as "Coastal Refrig".')) -> dict:
+        """Find the parties that match an email, a phone number or a name. It never picks.
+
+        An email, phone or alias equal to the text, ignoring case, is an
+        exact match. Only when there is none: every party whose name or an
+        alias contains every word of the text, or appears inside the text,
+        ignoring case ("Harbor Co" finds the alias "Harbor"). Each candidate
+        has id, kind, name, is_operator, match (email, phone, alias,
+        name_words or alias_words) and matched_value. Call it before
+        create_party. One exact match: use it. A name match: ask the person,
+        then record the new email or spelling with record_party_identifier.
+        None: ask, then create the party.
+        """
+        return {'candidates': ledger.find_parties(text)}

@@ -10,7 +10,7 @@
       "name": "business-state-machine-mcp",
       "source": "./",
       "description": "Set up the ledger, write the SOP, update the state machine from each update, and tell the person what needs them.",
-      "version": "0.1.0"
+      "version": "0.2.0"
     }
   ]
 }

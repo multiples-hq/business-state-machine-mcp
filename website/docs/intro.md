@@ -29,7 +29,7 @@ business task. When all the milestones are checked off, the task is done.
 
 ## What it does
 
-Think of a bank ledger, kept for your work instead of your money. Nothing
+Think of a bank ledger, kept for your work and its money. Nothing
 is edited or deleted. Every change is a new line that says who made it,
 why, and which email proves it.
 
@@ -50,6 +50,9 @@ deciding.
 
 ## What it is not
 
-No user interface, no pricing or invoicing, no email client and no
-scheduler. The agent decides every status; the ledger never works one out.
+No user interface, no accounting, no email client and no scheduler.
+Money is recorded both ways, as charges, bills and payments on each job,
+and the reads show what is open and how late; nothing files tax or
+converts currency. The agent decides every status; the ledger never works
+one out.
 See [Limits](reference/limits.md).

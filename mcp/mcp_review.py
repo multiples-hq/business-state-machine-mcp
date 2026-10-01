@@ -113,6 +113,11 @@ def register_review_tools(tool, serialized, ledger):
             if owner is None or owner['kind'] != work_kind:
                 raise ValueError('review work does not exist with the supplied kind')
             roles_before = ledger.memo_roles(memo_id)
+            bills = ledger.invoice_ids(milestones)
+            if bills:
+                raise ValueError(f'{bills[0]} is an invoice, not a milestone: judgments go on '
+                                 'milestones, so judge each charge of the bill (read_work_money '
+                                 'lists them)')
             for judgment, identifier, milestone_id in zip(judgments, identifiers, milestones):
                 ledger.append_judgment(
                     identifier, milestone_id, judgment.status, judgment.explanation, actor,
